@@ -9,6 +9,7 @@ app.get('/vendor', (req, res) => {
     console.log("bad day right?")
 
     console.log("bad day 888888888?")
+    console.log("bad day 99999?")
 })
 
 app.listen(port, () => {
