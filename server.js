@@ -5,7 +5,7 @@ const port = 5000;
 
 app.get('/vendor', (req, res) => {
     res.status(200).json({ sucess: "true", message: "what the hell is the world" })
-
+    console.log("a good thing")
 })
 
 app.listen(port, () => {
