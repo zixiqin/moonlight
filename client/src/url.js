@@ -2,7 +2,7 @@ let URLs = {};
 
 if(process.env.NODE_ENV ==="production"){
     URLs = {
-        baseURL: '/api',
+        baseURL: "/api",
         socketURL: "我们用的heroku",
     };
 }else{

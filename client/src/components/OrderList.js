@@ -14,7 +14,7 @@ function Orders(props){
 
     useEffect(()=>{
         async function fetchData(){
-            axios.get("/order?"+props.target+'+'+id).then(response=>{
+            axios.get("/order?" + props.target + '=' + id ).then(response=>{
                 if(response.data.success) {
                     setOrders(response.data.allOrders)
                 }else{
