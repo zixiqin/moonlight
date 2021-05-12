@@ -14,10 +14,12 @@ export default function Header(props) {
 
     const [title, setTitle] = useState('');
     const [options, setOptions] = useState([]);
+    const [target, setTarget] = useState('');
 
     useEffect(() => {
         if (history.location.pathname === "/customer"){
             setTitle('welcome ' + props.customer.givenName)
+            setTarget('customer');
             setOptions([<Button variant = "outline-dark" key = "0"
                 onClick = {()=> {
                     history.push('profile',{
@@ -48,7 +50,10 @@ export default function Header(props) {
                 width={"60vw"}>
                 All Orders
                 <Divider/>
-                <OrderList orders={props.orders} />
+                <OrderList id = {props.customer.id} 
+                            orders={props.orders} 
+                            target = {target}
+                            />
             </Drawer>
         </div>
     )
