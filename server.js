@@ -70,12 +70,12 @@ connection.once("open", () => {
                 io.of("/api/socket").emit("newOrder", order);
                 break;
             case "update":
-                consolde.log("update detected at backend");
+                console.log("update detected at backend");
                 io.of("/api/socket").emit("updateOrder", change.documentKey._id);
                 break;
             
             case "delete":
-                consolde.log("deletion detected at backend");
+                console.log("deletion detected at backend");
                 io.of("/api/socket").emit("deleteOrder", change.documentKey._id);
                 break;
         }
