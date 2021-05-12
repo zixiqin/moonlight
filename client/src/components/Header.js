@@ -27,7 +27,7 @@ export default function Header(props) {
                 }}>Profile</Button>,
                         <Button variant = "outline-dark" key = "1" onClick = {handleDrawerShow}>See Orders</Button>])
         }else if (history.location.pathname === "/profile"){
-            setTitle('welcome to your profile setting' + props.customer.givenName)
+            setTitle('welcome to your profile setting')
             setOptions([
                 <Button variant = "outline-primary" key = "1" onClick = {()=>history.goBack()}>Back</Button>
             ])
