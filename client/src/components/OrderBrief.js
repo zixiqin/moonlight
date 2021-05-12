@@ -35,7 +35,7 @@ export default function OrderBrief(props) {
                 >
                     <EditOutlined/>
                 </OverlayTrigger>]}>
-                <Meta title={props.order.vendor.name + " - " + props.order.status}/>
+                <Meta title={"VendorId: " + props.order.vendor._id + " - " + props.order.status}/>
                 <CountUp updatedAt={props.order.updatedAt}/>
             </Card>
         </div>
