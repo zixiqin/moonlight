@@ -16,8 +16,8 @@ export default class CountUp extends Component {
     }
 
     tick(){
-        let now = new Date(this.props.updatedAt)
-        let upd = Date.parse()
+        let now = new Date()
+        let upd = Date.parse(this.props.updatedAt)
         this.setState({min: parseInt((now - upd) / 60000)})
         let sec = ((now - upd) - this.state.min * 60000) / 1000
         this.setState({sec: parseInt(sec)})
@@ -36,7 +36,7 @@ export default class CountUp extends Component {
     render(){
         return (
             <div>
-                <Text strong= {true}> {this.state.min + " mins" + this.state.sec + " secs"} </Text>
+                <Text strong= {true}> {this.state.min + " mins " + this.state.sec + " secs"} </Text>
             </div>
         )
     }

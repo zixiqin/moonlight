@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { Tooltip, OverlayTrigger } from 'react-bootstrap'; 
 import { Card, Modal } from 'antd';
 import { EyeOutlined, EditOutlined } from '@ant-design/icons';
+
+import CountUp from './CountUp.js';
+
 const { Meta } = Card;
 
 export default function OrderBrief(props) {
@@ -33,6 +36,7 @@ export default function OrderBrief(props) {
                     <EditOutlined/>
                 </OverlayTrigger>]}>
                 <Meta title={props.order.vendor.name + " - " + props.order.status}/>
+                <CountUp updatedAt={props.order.updatedAt}/>
             </Card>
         </div>
     )
