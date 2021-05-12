@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom';
 import {Divider, Drawer, PageHeader} from 'antd';
 import {Button} from 'react-bootstrap';
 import OrderList from '../components/OrderList.js';
 
 export default function Header(props) {
+
+    let history = useHistory();
 
     const [drawerVisible, setDrawerVisible] = useState(false); 
     const handleDrawerClose = () => setDrawerVisible(false); 
@@ -13,10 +16,21 @@ export default function Header(props) {
     const [options, setOptions] = useState([]);
 
     useEffect(() => {
-        if (props.customer){
+        if (history.location.pathname === "/customer"){
             setTitle('welcome ' + props.customer.givenName)
-            setOptions([<Button variant = "outline-dark" key = "1"
-                onClick = {handleDrawerShow}>See Orders</Button>])
+            setOptions([<Button variant = "outline-dark" key = "0"
+                onClick = {()=> {
+                    history.push('profile',{
+                        customer:props.customer,
+                        orders: props.orders
+                    });
+                }}>Profile</Button>,
+                        <Button variant = "outline-dark" key = "1" onClick = {handleDrawerShow}>See Orders</Button>])
+        }else if (history.location.pathname === "/profile"){
+            setTitle('welcome to your profile setting' + props.customer.givenName)
+            setOptions([
+                <Button variant = "outline-primary" key = "1" onClick = {()=>history.goBack()}>Back</Button>
+            ])
         }else{
             setTitle('welcome')
         }
