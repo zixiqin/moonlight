@@ -27,7 +27,7 @@ export default function Header(props) {
                         orders: props.orders
                     });
                 }}>Profile</Button>,
-                        <Button variant = "outline-dark" key = "1" onClick = {handleDrawerShow}>See Orders</Button>])
+            <Button variant = "outline-dark" key = "1" onClick = {handleDrawerShow}>See Orders</Button>])
         }else if (history.location.pathname === "/profile"){
             setTitle('welcome to your profile setting')
             setOptions([
@@ -50,9 +50,9 @@ export default function Header(props) {
                 width={"60vw"}>
                 All Orders
                 <Divider/>
-                <OrderList id = {props.customer.id} 
+                <OrderList id = {props.customer.id}
+                            target = {target} 
                             orders={props.orders} 
-                            target = {target}
                             />
             </Drawer>
         </div>
