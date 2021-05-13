@@ -59,6 +59,37 @@ exports.vendorParkUpdate = function(req, res) {
         }
     );
 };
+
+/** login a vendor
+ *  (POST) http://localhost:5000/vendor/login
+ */
+exports.vendorLoginPost = function(req,res){
+    const { userName, password } = req.body;
+    //match vendor
+    Vendor.findOne({
+        userName: userName,
+    }).then ((vendor) => {
+        if(!vendor){
+            res.status(404).json({sucess: false, error:"Name not registered"});
+        }else{
+            bcrypt.compare(password, vendor.password, (err, isMatch) => {
+                if(isMatch){
+                    res.status(200).json({
+                        success: true,
+                        vendor: {
+                            id: vendor.id,
+                            userName: vendor.userName,
+                            password: vendor.password,
+                        },
+                    });
+                }else{
+                    res.status(409).json({error: err, message:"password incorrect"});
+                }
+            })
+        }
+    })
+}
+
 /** Get five nearest vendors
  * (GET) http://localhost:5000/vendor?lat=...&lng=...
  */

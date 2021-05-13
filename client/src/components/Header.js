@@ -14,10 +14,12 @@ export default function Header(props) {
 
     const [title, setTitle] = useState('');
     const [options, setOptions] = useState([]);
+    const [target, setTarget] = useState('');
 
     useEffect(() => {
         if (history.location.pathname === "/customer"){
             setTitle('welcome ' + props.customer.givenName)
+            setTarget('customer');
             setOptions([<Button variant = "outline-dark" key = "0"
                 onClick = {()=> {
                     history.push('profile',{
@@ -25,12 +27,14 @@ export default function Header(props) {
                         orders: props.orders
                     });
                 }}>Profile</Button>,
-                        <Button variant = "outline-dark" key = "1" onClick = {handleDrawerShow}>See Orders</Button>])
+            <Button variant = "outline-dark" key = "1" onClick = {handleDrawerShow}>See Orders</Button>])
         }else if (history.location.pathname === "/profile"){
             setTitle('welcome to your profile setting')
             setOptions([
                 <Button variant = "outline-primary" key = "1" onClick = {()=>history.goBack()}>Back</Button>
             ])
+        }else if(history.location.pathname ==='/vendor'){
+            setTitle('Welcome back ' + props.vendor.userName)
         }else{
             setTitle('welcome')
         }
@@ -48,7 +52,10 @@ export default function Header(props) {
                 width={"60vw"}>
                 All Orders
                 <Divider/>
-                <OrderList orders={props.orders} />
+                <OrderList id = {props.id}
+                            target = {target} 
+                            orders={props.orders} 
+                            />
             </Drawer>
         </div>
     )
