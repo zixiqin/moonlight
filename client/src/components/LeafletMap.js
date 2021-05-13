@@ -67,6 +67,31 @@ export default function LeafletMap(props) {
  
     return (
         <>
+            <Modal show = {show} onHide = {handleClose} style = {{marginTop: '2vh'}}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Vendor Park</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formBasicEmail">
+                            <Form.Label>Detailed Text address</Form.Label>
+                            <Form.Control type="text" placeholder="Enter address"
+                                onChange={e => setAddress(e.target.value)} />
+                            <Form.Text className="text-muted">
+                                Plases enter the detailed address
+                            </Form.Text>  
+                        </Form.Group>
+                    </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="primary" onClick={onPark}>
+                    Submit
+                </Button>
+            </Modal.Footer>
+            </Modal>
+
+
+
             <MapContainer center={props.center} zoom={18} scrollWheelZoom={false} style={{height: "90vh"}}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -76,18 +101,6 @@ export default function LeafletMap(props) {
                 {(history.location.pathname ==='/vendor') ? renderVendorMarker : <></>}
                 {(history.location.pathname ==='/customer') ? renderCustomerMarker : <></>}
                 {(history.location.pathname ==='/customer') ? renderFiveVendors : <></>}
-                {/* <Marker position={props.center} iconUrl = {"https://static.thenounproject.com/png/780108-200.png"}>
-                    <Popup>Your location </Popup>
-                </Marker>
-                {
-                    props.vendors.map((vendor) => (
-                        <Menu key = {vendor.id}
-                            position = {vendor.location}
-                            snacks = {props.snacks}
-                            vendor = {vendor}
-                            customer = {props.customer}/>
-                    ))
-                } */}
             </MapContainer>
         </>
     )
