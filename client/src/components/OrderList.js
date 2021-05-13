@@ -9,12 +9,16 @@ import OrderBrief from './OrderBrief.js';
 
 function Orders(props){
     const[orders, setOrders] = useState([])
+    const[status, setStatus] = useState([])
     const id = props.id
 
 
     useEffect(()=>{
+        if (props.status) {
+            setStatus(props.status)
+        }
         async function fetchData(){
-            axios.get("/order?" + props.target + '=' + id + props.status).then(response=>{
+            axios.get("/order?" + props.target + '=' + id + status).then(response=>{
                 if(response.data.success) {
                     setOrders(response.data.allOrders)
                 }else{
