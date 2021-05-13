@@ -135,7 +135,7 @@ function App(props) {
         <Modal.Body>
           <Form>
             <Form.Group controlId="formBasic">
-              <Form.Label>User Name</Form.Label>
+              <Form.Label>Vendor Name</Form.Label>
               <Form.Control type="text" placeholder="Enter user name"
                 onChange={e => setName(e.target.value)} />
               <Form.Text className="text-muted">

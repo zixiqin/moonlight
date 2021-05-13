@@ -33,6 +33,8 @@ export default function Header(props) {
             setOptions([
                 <Button variant = "outline-primary" key = "1" onClick = {()=>history.goBack()}>Back</Button>
             ])
+        }else if(history.location.pathname ==='/vendor'){
+            setTitle('Welcome back ' + props.vendor.userName)
         }else{
             setTitle('welcome')
         }
@@ -50,7 +52,7 @@ export default function Header(props) {
                 width={"60vw"}>
                 All Orders
                 <Divider/>
-                <OrderList id = {props.customer.id}
+                <OrderList id = {props.id}
                             target = {target} 
                             orders={props.orders} 
                             />

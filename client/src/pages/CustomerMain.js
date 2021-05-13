@@ -32,7 +32,8 @@ export default function CustomerMain(props) {
     console.log(props.location.state.position)
     return (
         <>
-            <Header customer = {props.location.state.customer}
+            <Header id = {props.location.state.customer.id}
+                    customer = {props.location.state.customer}
                     orders =  {orders}/>
             <LeafletMap center = {props.location.state.position}
                         vendors = {props.location.state.vendors}
