@@ -19,6 +19,10 @@ export default function OrderBrief(props) {
         </Tooltip>
     );
 
+    const getTime = () => {
+        console.log(new Date())
+    }
+
     return (
         <div>
             <Modal visible={modalVisible} title = {"OrderId: " + props.order._id}
@@ -28,16 +32,12 @@ export default function OrderBrief(props) {
             </Modal>
         
             <Card style={{ margin: "10px" }}
-                actions={[<EyeOutlined onClick={handleShow} />, <OverlayTrigger
-                    placement="bottom"
-                    delay={{show: 250, hide: 408 }}
-                    overlay= {renderTooltip}
-                >
-                    <EditOutlined/>
-                </OverlayTrigger>]}>
+                actions={[<EyeOutlined onClick={handleShow} />,
+                    <EditOutlined onClick={getTime}/>
+                    ]}>
                 <Meta title={"VendorId: " + props.order.vendor._id + " - " + props.order.status}/>
                 <CountUp updatedAt={props.order.updatedAt}/>
             </Card>
         </div>
-    )
+    ) 
 }
