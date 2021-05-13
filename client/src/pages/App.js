@@ -136,7 +136,7 @@ function App(props) {
           <Form>
             <Form.Group controlId="formBasic">
               <Form.Label>User Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter name"
+              <Form.Control type="text" placeholder="Enter user name"
                 onChange={e => setName(e.target.value)} />
               <Form.Text className="text-muted">
                 We promise that never sharing your details with others = )
